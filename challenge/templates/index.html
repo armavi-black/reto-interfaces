@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzlebot Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="m-2 w-full h-full">
+    <h2 class="text-3xl text-emerald-600 text-center font-bold">Pozolebot Dashboard</h2>
+    <div class="flex flex-row justify-around m-10 w-full gap-8 h-full">
+        <div class="text-xl font-bold w-full h-full">
+            <h3 class="text-indigo-900">Robot Pose Coordinates</h3>
+            <div class="w-full h-96 bg-zinc-300/20 rounded-md grid grid-cols-3 justify-items-center content-center">
+                <div class="w-fit h-fit py-2 px-8 bg-white flex flex-col rounded-sm ">
+                    <div class="text-zinc-800/50 text-xs">X</div>
+                    <p>{{ pose_data.x }}</p>
+                </div>
+                <div class="w-fit h-fit py-2 px-8 bg-white flex flex-col rounded-sm">
+                    <div class="text-zinc-800/50 text-xs">Y</div>
+                    <p>{{ pose_data.y }}</p>
+                </div>
+                <div class="w-fit h-fit py-2 px-8 bg-white flex flex-col rounded-sm">
+                    <div class="text-zinc-800/50 text-xs">Theta</div>
+                    <p>{{ pose_data.yaw }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-xl text-indigo-900 font-bold">
+            <h3>Puzzlebot Camera Image</h3>
+            <img src="data:image/jpg;base64,{{ img_data.bytes }}"></img>
+        </div>
+    </div>
+
+</body>
+</html>

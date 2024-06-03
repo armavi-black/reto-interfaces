@@ -1,0 +1,30 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+package RPCDemoPkg;
+
+option go_package = "example.com/rest-gateway-demo/protos";
+import "google/api/annotations.proto";
+
+message Pose {
+    double x = 1;
+    double y = 2;
+    double yaw = 3;
+}
+
+message ImageData {
+    bytes image_bytes = 1;
+}
+
+message RobotData {
+    Pose pose = 1;
+    ImageData image = 2;
+}
+
+service RobotService {
+    rpc GetRobotData (google.protobuf.Empty) returns (RobotData) {
+        option(google.api.http) = {
+            post: "/api/v1/getrobotdata"
+	    body: "*"
+        };
+    };
+}

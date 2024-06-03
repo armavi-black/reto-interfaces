@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+
+message Pose {
+    double x = 1;
+    double y = 2;
+    double yaw = 3;
+}
+
+message ImageData {
+    bytes image_bytes = 1;
+}
+
+message RobotData {
+    Pose pose = 1;
+    ImageData image = 2;
+}
+
+
+service RobotService{
+    rpc GetRobotData (google.protobuf.Empty) returns (RobotData);
+}
